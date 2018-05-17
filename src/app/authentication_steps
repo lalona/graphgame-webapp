@@ -1,0 +1,9 @@
+# add core module to app.module.ts
+$ng g module core
+$ng g service core/auth -m core
+# see interface for code
+$ng g interface core/user
+
+# see subscriber-page
+
+# ng g guard core/admin -m core

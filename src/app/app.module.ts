@@ -1,29 +1,42 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
+import { FormsModule }   from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from './../environments/environment'
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { UserHistoryComponent } from './user-history/user-history.component';
 import { SignupComponent } from './signup/signup.component';
+import { MembersComponent } from './members/members.component';
+
+import { CoreModule } from './core/core.module'
+import { routes } from './app.routes';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserRegistrationComponent } from './user-registration/user-registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     UserHistoryComponent,
-    SignupComponent
+    SignupComponent,
+    MembersComponent,
+    UserProfileComponent,
+    UserRegistrationComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
-    AngularFireAuth
-  ],
-  providers: [],
+    AngularFireAuthModule,
+    BrowserAnimationsModule,
+    CoreModule,
+    routes
+  ],  
   bootstrap: [AppComponent]
 })
 export class AppModule { }
