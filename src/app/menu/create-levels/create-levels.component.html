@@ -82,6 +82,14 @@
           <input type="number" placeholder="LastNames" 
                 (ngModel)="solvedSz" name="solvedSz" class="txt" required>
       </div>
+
+      <input type="text" placeholder="Numero de intentos posibles" 
+            (ngModel)="maxAttemps" name="maxAttemps" class="txt" required>
+
+      <input type="text" placeholder="Numero de transformaciones" 
+            (ngModel)="max_transformations" name="max_transformations" class="txt" required>
   
-      <button type="submit" [disabled]="!formData.valid" class="basic-btn">Create my account</button>
+      <button type="submit" [disabled]="!formData.valid" class="basic-btn">
+            Crear nivel
+      </button>
     </form>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-create-levels',
@@ -7,9 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateLevelsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public db: AngularFireDatabase) { }
 
   ngOnInit() {
+  }
+
+  onSubmit(level) {
+    console.log(level);
+    this.db.list('/levels').valueChanges().subscribe(
+      levels => {
+        console.log(levels.length)
+        let levelJson = {
+          
+        }
+        this.db.list('/levels').push(
+          { "level 3": {
+              
+            }
+          }
+        )
+      }
+    );
   }
 
 }
