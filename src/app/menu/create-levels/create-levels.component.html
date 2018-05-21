@@ -1,0 +1,87 @@
+<div>
+  
+    <h2>Crear niveles</h2>
+  
+    <span class="error" *ngIf="error" [@fallIn]='state'>{{ error }}</span>
+      
+    <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+  
+      <input type="text" placeholder="Nombre" 
+            (ngModel)="levelName" name="levelName" class="txt" required>
+  
+      <input type="text" placeholder="Figura" 
+            (ngModel)="prefabName" name="prefabName" class="txt" required>
+  
+      <label>Estado de inicio</label>
+      <label>Translacion</label>
+      <div class="vector3">
+          <input type="number" placeholder="x" 
+          (ngModel)="startTx" name="startTx" class="txt" required>
+
+          <input type="text" placeholder="y" 
+                (ngModel)="startTy" name="startTy" class="txt" required>
+
+          <input type="text" placeholder="z" 
+                (ngModel)="startTz" name="startTy" class="txt" required>
+
+      </div>
+      <label>Rotacion</label>
+      <div class="vector3">
+          <input type="number" placeholder="x" 
+          (ngModel)="startRx" name="startRx" class="txt" required>
+
+          <input type="number" placeholder="Firstnames" 
+                (ngModel)="startRy" name="startRy" class="txt" required>
+
+          <input type="number" placeholder="LastNames" 
+                (ngModel)="startRz" name="startRz" class="txt" required>
+      </div>
+      <label>Escala</label>
+      <div class="vector3">
+          <input type="number" placeholder="x" 
+          (ngModel)="startSx" name="startSx" class="txt" required>
+
+          <input type="number" placeholder="Firstnames" 
+                (ngModel)="startSy" name="startSy" class="txt" required>
+
+          <input type="number" placeholder="LastNames" 
+                (ngModel)="startSz" name="startSz" class="txt" required>
+      </div>
+
+      <label>Solucion</label>
+      <label>Translacion</label>
+      <div class="vector3">
+          <input type="number" placeholder="x" 
+          (ngModel)="solvedTx" name="solvedTx" class="txt" required>
+
+          <input type="number" placeholder="Firstnames" 
+                (ngModel)="solvedTy" name="solvedTy" class="txt" required>
+
+          <input type="number" placeholder="LastNames" 
+                (ngModel)="solvedTz" name="solvedTz" class="txt" required>
+      </div>
+      <label>Rotacion</label>
+      <div class="vector3">
+          <input type="number" placeholder="x" 
+          (ngModel)="solvedRx" name="solvedRx" class="txt" required>
+
+          <input type="number" placeholder="Firstnames" 
+                (ngModel)="solvedRy" name="solvedRy" class="txt" required>
+
+          <input type="number" placeholder="LastNames" 
+                (ngModel)="solvedRz" name="solvedRz" class="txt" required>
+      </div>
+      <label>Escala</label>
+      <div class="vector3">
+          <input type="number" placeholder="x" 
+          (ngModel)="solvedSx" name="solvedSx" class="txt" required>
+
+          <input type="number" placeholder="Firstnames" 
+                (ngModel)="solvedSy" name="solvedSy" class="txt" required>
+
+          <input type="number" placeholder="LastNames" 
+                (ngModel)="solvedSz" name="solvedSz" class="txt" required>
+      </div>
+  
+      <button type="submit" [disabled]="!formData.valid" class="basic-btn">Create my account</button>
+    </form>

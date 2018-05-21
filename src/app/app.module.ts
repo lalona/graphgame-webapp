@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { UserHistoryComponent } from './user-history/user-history.component';
 import { SignupComponent } from './signup/signup.component';
 import { MembersComponent } from './members/members.component';
+import { MenuModule } from './menu/menu.module'
 
 import { CoreModule } from './core/core.module'
 import { routes } from './app.routes';
@@ -25,7 +26,7 @@ import { UserRegistrationComponent } from './user-registration/user-registration
     SignupComponent,
     MembersComponent,
     UserProfileComponent,
-    UserRegistrationComponent
+    UserRegistrationComponent    
   ],
   imports: [
     BrowserModule,
@@ -35,7 +36,8 @@ import { UserRegistrationComponent } from './user-registration/user-registration
     AngularFireAuthModule,
     BrowserAnimationsModule,
     CoreModule,
-    routes
+    routes,
+    MenuModule
   ],  
   bootstrap: [AppComponent]
 })
