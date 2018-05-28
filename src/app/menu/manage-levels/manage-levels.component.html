@@ -1,0 +1,58 @@
+<p>Mange levels</p>
+
+  <!-- To show the only avaibles or all -->
+  <ul class="segmented-control">
+    <li class="segmented-control__item" (click)="showAll()">
+        <input class="segmented-control__input" type="radio" 
+          value="1" name="option" id="option-1" checked>
+        <label class="segmented-control__label" for="option-1">
+          Todos
+        </label>
+    </li>
+    <li class="segmented-control__item" (click)="showEnableds()">
+        <input class="segmented-control__input" type="radio" 
+          value="2" name="option" id="option-2" >
+        <label class="segmented-control__label" for="option-2">
+          Habilitados
+        </label>
+    </li>
+  </ul>
+
+  <!--<div class="wrap-collabsible" *ngFor="let level of levels$ | async">-->
+  <div class="wrap-collabsible" *ngFor="let level of levels">
+    <input id="{{level.name}}" class="toggle" type="checkbox">
+    <label for="{{level.name}}" class="lbl-toggle">{{ level.name }}</label>    
+    <div class="collapsible-content">
+      <div class="content-inner">
+        <p>
+          Posicion de inicio : 
+          p {{ level.start_state.position }} 
+          r {{ level.start_state.rotation }}
+          s {{ level.start_state.scale }}
+        
+          Posicion final : 
+          p {{ level.solved_state.position }} 
+          r {{ level.solved_state.rotation }}
+          s {{ level.solved_state.scale }}
+        
+          Maximos intentos : {{ level.max_attemps }}
+          Maximas transformaciones : {{level.max_transformations}}          
+        </p>
+        <div *ngIf="level.disabled; else elseBlock">
+          <button class="lbl-button" 
+          (click)="avaible(level)">
+            Habilitar
+          </button>          
+        </div>        
+        <ng-template #elseBlock>
+            <button class="lbl-button" (click)="disable(level)" #elseBlock>  
+              Deshabilitar
+            </button>
+        </ng-template>
+        
+      </div>
+    </div>
+  </div>
+
+  <a class="nav-link" routerLink="/menu/create-levels">Crear nivel</a>
+  

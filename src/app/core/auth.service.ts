@@ -84,7 +84,6 @@ export class AuthService {
     const studentRole: Roles = {
       student: true
     };
-
     
     const userData: User = {      
       email: user.email,
@@ -93,23 +92,12 @@ export class AuthService {
       lastNames: user.lastNames,
       role: studentRole
     };
-
-    const dataU = {
-      uid, userData
-    }
-    const usernameData = { uid
-    };
-
-    let u = user.username;
-    const dataUs = {
-      u, usernameData
-    };
   
     const usersRef = this.db.list('users');
-    usersRef.push(dataU);
+    usersRef.update(uid, userData);
     
     const usernameRef = this.db.list('usernames');
-    usersRef.push(dataUs);
+    usersRef.update(user.username, { "uid": uid});
   }
 
 
