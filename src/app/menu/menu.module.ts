@@ -8,6 +8,8 @@ import { StadisticsComponent } from './stadistics/stadistics.component';
 import { FormsModule }   from '@angular/forms';
 import { ManageLevelsComponent } from './manage-levels/manage-levels.component';
 import {MatExpansionModule, MatFormFieldModule} from '@angular/material';
+import { AcceptOnlyNumbersDirective } from './create-levels/acept-only-numbers.directive';
+import { InputOnlyStepComponent } from './create-levels/input-only-step/input-only-step.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -20,7 +22,7 @@ import {MatExpansionModule, MatFormFieldModule} from '@angular/material';
     MenuComponent, 
     CreateLevelsComponent, 
     ManageUsersComponent, 
-    StadisticsComponent, ManageLevelsComponent
+    StadisticsComponent, ManageLevelsComponent, AcceptOnlyNumbersDirective, InputOnlyStepComponent
   ]
 })
 export class MenuModule { }

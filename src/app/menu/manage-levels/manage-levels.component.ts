@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AngularFireDatabase,AngularFireList } from 'angularfire2/database';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 import { _ } from 'underscore'
 
@@ -9,11 +9,12 @@ import { _ } from 'underscore'
   templateUrl: './manage-levels.component.html',
   styleUrls: ['./manage-levels.component.css']
 })
-export class ManageLevelsComponent implements OnInit {
-
+export class ManageLevelsComponent implements OnDestroy {
+  
   basePath = "levels";
   levelsRef: AngularFireList<any>;
   levels$: Observable<any[]>;
+  $levels: Subscription;
   levels: any[];
   allLevels: any[];
   enabledLevels: any[];
@@ -32,13 +33,17 @@ export class ManageLevelsComponent implements OnInit {
         return levels_key;
       }) 
     );
-    this.levels$.subscribe(
+    this.$levels = this.levels$.subscribe(
       levels => {
         this.allLevels = levels
         this.enabledLevels = _.reject(levels, l => l.disabled == true)
         this.showSelected();
       }
     );
+  }
+
+  ngOnDestroy(): void {
+    this.$levels.unsubscribe();
   }
 
   changeStateDisabled(level_avaible, state) {
@@ -58,10 +63,6 @@ export class ManageLevelsComponent implements OnInit {
 
   avaible(level_disable) {
     this.changeStateDisabled(level_disable, false)
-  }
-
-
-  ngOnInit() {
   }
 
   showSelected() {

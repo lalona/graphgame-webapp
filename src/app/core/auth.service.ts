@@ -97,7 +97,7 @@ export class AuthService {
     usersRef.update(uid, userData);
     
     const usernameRef = this.db.list('usernames');
-    usersRef.update(user.username, { "uid": uid});
+    usernameRef.update(user.username, { "uid": uid});
   }
 
 

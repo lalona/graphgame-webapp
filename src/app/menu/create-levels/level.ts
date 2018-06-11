@@ -5,10 +5,14 @@ export class Level {
     solvedState: Transformation;
     startState: Transformation;
     prefabName: string;
+    stepsScale: number = 1
+    stepsTranslate: number = 1
 
     toJson() {
         return {
             "name": this.name,
+            "steps_scale": this.stepsScale,
+            "steps_translate": this.stepsTranslate,
             "solved_state": this.solvedState.toJson(),
             "start_state": this.startState.toJson(),
             "max_attemps": this.maxAttemps,
@@ -25,20 +29,43 @@ export class Level {
 }
 
 export class Transformation {
-    rotate: Vector3;
+    rotations: Rotation[];
     translation: Vector3;
     scale: Vector3;
 
     toJson() {
         return {
-            "rotate": this.rotate.getCommaFormat(),
+            "rotation": this.getRotationsJson(),
             "position": this.translation.getCommaFormat(),
             "scale": this.scale.getCommaFormat()
         }
     }
 
+    getRotationsJson() {
+        var json = {}
+        for(var i = 0; i < this.rotations.length; i++) {
+            var rot = this.rotations[i]            
+            let a = rot.axis
+            if(a == "x") {
+                json[i] = {
+                    "x": rot.value
+                }
+            } else if(a == "y") {
+                json[i] = {
+                    "y": rot.value
+                }
+            } else if(a == "z") {
+                json[i] = {
+                    "z": rot.value
+                }
+            }
+            
+        }
+        return json
+    }
+
     constructor() {
-        this.rotate = new Vector3();
+        this.rotations = []
         this.translation = new Vector3();
         this.scale = new Vector3();
     }
@@ -54,3 +81,14 @@ export class Vector3 {
         return this.x + "," + this.y + "," + this.z;
     }
 }
+
+export class Rotation {
+    axis: string = ""
+    value: number = 0
+}
+
+export const RotationAxis = [
+    "x", "y", "z"
+]
+
+export const STEPS = [0.5, 1]

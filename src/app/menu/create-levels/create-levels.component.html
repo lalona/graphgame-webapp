@@ -18,122 +18,146 @@
       </option>          
   </select>
 
+  <label>Pasos en escala</label>
+  <select [(ngModel)]="level.stepsScale" name="level.stepsScale">
+      <option
+        *ngFor="let step of steps"
+        [value]="step">
+        {{step}}
+      </option>          
+  </select>
+  
+  <label>Pasos en translación</label>
+  <select [(ngModel)]="level.stepsTranslate" name="level.stepsTranslate">
+      <option
+        *ngFor="let step of steps"
+        [value]="step">
+        {{step}}
+      </option>          
+  </select>
+
   <label>Estado de inicio</label>
   <label>Translacion</label>
-  <div class="vector3">
-      <input type="number" placeholder="x" 
-        [(ngModel)]="level.startState.translation.x" name="startTx" 
-        class="txt" required>
+  <div class="vector3">  
+      <app-input-only-step [step]="level.stepsTranslate" [min]="-2" [max]="2"
+        [(ngModel)]="level.startState.translation.x" name="startTx">
+      </app-input-only-step>
+  
+      <app-input-only-step [step]="level.stepsTranslate" [min]="-2" [max]="2"
+        [(ngModel)]="level.startState.translation.y" name="startTy">
+      </app-input-only-step>
 
-      <input type="number" placeholder="y" 
-            [(ngModel)]="level.startState.translation.y" name="startTy" 
-            class="txt" required>
-
-      <input type="number" placeholder="z" 
-            [(ngModel)]="level.startState.translation.z" name="startTz" 
-            class="txt" required>
+      <app-input-only-step [step]="level.stepsTranslate" [min]="-2" [max]="2"
+        [(ngModel)]="level.startState.translation.z" name="startTz">
+      </app-input-only-step>      
   </div>
   <label>Rotacion</label>
-  <div class="vector3">
-      <label>x</label>
-      <input type="number" placeholder="x" 
-        step="45"
-        [(ngModel)]="level.startState.rotate.x" name="startRx" 
-        class="txt" required>
-      <label>y</label>
-      <input type="number" placeholder="y" 
-        step="45"          
-        [(ngModel)]="level.startState.rotate.y" name="startRy" 
-        class="txt" required>
-        <label>z</label>
-      <input type="number" placeholder="z" 
-        step="45"
-        [(ngModel)]="level.startState.rotate.z" name="startRz" 
-        class="txt" required>
+  <div>
+    <label *ngFor="let rot of level.startState.rotations">
+      Axis: {{rot.axis}} Value: {{rot.value}}
+    </label>
+    <div class="rotation">      
+        <app-input-only-step [step]="45" [min]="-1000" [max]="1000"
+          [(ngModel)]="rotationStarted.value" name="rotationStarted.value">
+        </app-input-only-step>      
+        <select [(ngModel)]="rotationStarted.axis" name="rotationStarted.axis">
+            <option
+              *ngFor="let rA of rotationAxis"
+              [value]="rA">
+              {{rA}}
+            </option>          
+        </select>          
+    </div>
+    <button (click)="addRotationStart()" class="basic-btn" type=button>
+          Agregar
+    </button>
   </div>
   <label>Escala</label>
   <div class="vector3">
       <label>x</label>
-      <input type="number" placeholder="x" 
-        [(ngModel)]="level.startState.scale.x" name="startSx" 
-        class="txt" required>
-
-      <label>y</label>  
-      <input type="number" placeholder="y" 
-        [(ngModel)]="level.startState.scale.y" name="startSy" 
-        class="txt" required>
+      <app-input-only-step [step]="level.stepsScale" [min]="1" [max]="3" 
+        [(ngModel)]="level.startState.scale.x" name="startSx">
+      </app-input-only-step>
+  
+      <label>y</label>
+      <app-input-only-step [step]="level.stepsScale" [min]="1" [max]="3"
+        [(ngModel)]="level.startState.scale.y" name="startSy">
+      </app-input-only-step>
 
       <label>z</label>
-      <input type="number" placeholder="z" 
-        [(ngModel)]="level.startState.scale.z" name="startSz" 
-        class="txt" required>
+      <app-input-only-step [step]="level.stepsScale" [min]="1" [max]="3"
+        [(ngModel)]="level.startState.scale.z" name="startSz">
+      </app-input-only-step>      
   </div>
 
   <label>Solucion</label>
   <label>Translacion</label>
   <div class="vector3">
       <label>x</label>
-      <input type="number" placeholder="x" 
-        [(ngModel)]="level.solvedState.translation.x" name="solvedTx" 
-        class="txt" required>
-
+      <app-input-only-step [step]="level.stepsTranslate" [min]="-2" [max]="2"
+        [(ngModel)]="level.solvedState.translation.x" name="solvedTx">
+      </app-input-only-step>
+  
       <label>y</label>
-      <input type="number" placeholder="y" 
-            [(ngModel)]="level.solvedState.translation.y" name="solvedTy" 
-            class="txt" required>
+      <app-input-only-step [step]="level.stepsTranslate" [min]="-2" [max]="2"
+        [(ngModel)]="level.solvedState.translation.y" name="solvedTy">
+      </app-input-only-step>
 
       <label>z</label>
-      <input type="number" placeholder="z" 
-            [(ngModel)]="level.solvedState.translation.z" name="solvedTz" 
-            class="txt" required>
+      <app-input-only-step [step]="level.stepsTranslate" [min]="-2" [max]="2"
+        [(ngModel)]="level.solvedState.translation.z" name="solvedTz">
+      </app-input-only-step>     
   </div>
   <label>Rotacion</label>
-  <div class="vector3">
-      <label>x</label>
-      <input type="number" placeholder="x"
-        step="45" 
-        [(ngModel)]="level.solvedState.rotate.x" name="solvedRx" 
-        class="txt" required>
-
-      <label>y</label>
-      <input type="number" placeholder="y" 
-        step="45"
-        [(ngModel)]="level.solvedState.rotate.y" name="solvedRy" 
-        class="txt" required>
-
-      <label>z</label>
-      <input type="text" placeholder="z" 
-        step="45"
-        [(ngModel)]="level.solvedState.rotate.z" name="solvedRz" 
-        class="txt" required>
-  </div>
+  <div>
+    <label *ngFor="let rot of level.solvedState.rotations">
+      Axis: {{rot.axis}} Value: {{rot.value}}
+    </label>
+    <div class="rotation">      
+        <app-input-only-step [step]="45" [min]="-1000" [max]="1000"
+          [(ngModel)]="rotationSolved.value" name="rotationSolved.value">
+        </app-input-only-step>      
+          
+        <select [(ngModel)]="rotationSolved.axis" name="rotationSolved.axis">
+            <option
+              *ngFor="let rA of rotationAxis"
+              [value]="rA">
+              {{rA}}
+            </option>          
+        </select>          
+    </div>
+    <button (click)="addRotationSolved()" class="basic-btn" type=button>
+          Agregar
+    </button>
+  </div>    
   <label>Escala</label>
   <div class="vector3">
-
       <label>x</label>
-      <input type="number" placeholder="x" 
-        [(ngModel)]="level.solvedState.scale.x" name="solvedSx" 
-        class="txt" required>
-        
+      <app-input-only-step [step]="level.stepsScale" [min]="1" [max]="3"
+        [(ngModel)]="level.solvedState.scale.x" name="solvedSx">
+      </app-input-only-step>
+  
       <label>y</label>
-      <input type="number" placeholder="y" 
-        [(ngModel)]="level.solvedState.scale.y" name="solvedSy" 
-        class="txt" required>
+      <app-input-only-step [step]="level.stepsScale" [min]="1" [max]="3"
+        [(ngModel)]="level.solvedState.scale.y" name="solvedSy">
+      </app-input-only-step>
 
       <label>z</label>
-      <input type="number" placeholder="z" 
-        [(ngModel)]="level.solvedState.scale.z" name="solvedSz" 
-        class="txt" required>
+      <app-input-only-step [step]="level.stepsScale" [min]="1" [max]="3"
+        [(ngModel)]="level.solvedState.scale.z" name="solvedSz">
+      </app-input-only-step>      
   </div>
 
   <label>Numero de intentos posibles</label>
-  <input type="number" placeholder="Numero de intentos posibles" 
-        [(ngModel)]="level.maxAttemps" name="maxAttemps" class="txt" required>
-
+  <app-input-only-step [step]="1" [min]="1" [max]="3"
+    [(ngModel)]="level.maxAttemps" name="maxAttemps">
+  </app-input-only-step>      
+  
   <label>Numero de transformaciones</label>
-  <input type="number" placeholder="Numero de transformaciones" 
-        [(ngModel)]="level.maxTransformations" name="maxTransformations" class="txt" required>
-
+  <app-input-only-step [step]="1" [min]="1" [max]="5"
+    [(ngModel)]="level.maxTransformations" name="maxTransformations">
+  </app-input-only-step>
+  
   <button type="submit" class="basic-btn">
         Crear nivel
   </button>
