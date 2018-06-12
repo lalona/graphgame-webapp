@@ -17,7 +17,7 @@ import { CoreModule } from './core/core.module'
 import { routes } from './app.routes';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
-
+import { GamesByUserService } from './menu/games-by-user.service'
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +38,10 @@ import { UserRegistrationComponent } from './user-registration/user-registration
     CoreModule,
     routes,
     MenuModule
-  ],  
+  ], 
+  providers: [
+    GamesByUserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

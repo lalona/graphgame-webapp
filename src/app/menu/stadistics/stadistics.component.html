@@ -1,3 +1,22 @@
-<p>
-  stadistics works!
-</p>
+
+<div>  
+  <input type="text" placeholder="Busca por nombre o correo"  
+    (keyup)="onFilter($event)">
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Correo</th>  
+      <th>Historial</th>    
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of filterUsers">
+      <td>{{user.firstNames}} {{user.lastNames}}</td>
+      <td>{{user.email}}</td>      
+      <td><a [routerLink]="['/menu/games', user.key]">ver</a></td>
+    </tr>    
+  </tbody>
+</table>

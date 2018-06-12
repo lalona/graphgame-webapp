@@ -158,6 +158,15 @@
     [(ngModel)]="level.maxTransformations" name="maxTransformations">
   </app-input-only-step>
   
+  <div *ngIf="level.name.invalid && (level.name.dirty || level.name.touched)"
+     class="alert alert-danger">
+    <div *ngIf="level.name.errors.required">
+      Name is required.
+    </div>
+  </div>
+
+  
+
   <button type="submit" class="basic-btn">
         Crear nivel
   </button>

@@ -46,7 +46,7 @@ export class CreateLevelsComponent implements OnDestroy {
           this.router.navigateByUrl('/menu/manage-levels');
           alert("Levelname not choosen")
         } else {
-          alert("Levelname already choosen")          
+          alert("Levelname already choosen")              
         }        
       }
     )   
