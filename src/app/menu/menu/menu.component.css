@@ -1,0 +1,96 @@
+
+/* GENERAL STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+body {
+    background: #FDD761;
+    font-family: 'Lucida Sans Unicode', 'Arial', serif;
+    color: white;
+  }
+  
+  
+  a {
+    text-align: center;
+    outline: none;
+    display: inline-block;
+    text-decoration: none;
+    background: #646464;
+    font-size: 18px;
+    color: #d3d3d3;
+    text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.25);
+    -webkit-transition: all ease .3s;
+            transition: all ease .3s;
+  }
+
+  a:hover {
+    background-color: #414141;
+  }
+  
+  
+  
+  
+  
+  /* HEADER STYLES
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */ 
+  nav ul, .contact ul {
+    list-style: none;
+    font-size: 0;
+  }
+  
+  nav li, .contact li {
+    margin-bottom: 0;
+    display: inline-block;
+  }
+  
+  nav li {
+    width: 50%;
+  }
+  
+  nav a {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    padding: 5px 0;
+    line-height: 30px;
+  }
+  
+  
+  
+  
+  
+  
+  
+  /* MEDIA QUERIES STYLES
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  
+  @media (min-width: 550px) {
+  
+    nav li {
+      width: auto;
+    }
+  
+    a {
+      box-shadow: 0 5px #414141;
+    }
+  
+    nav a {
+      padding: 7px;
+      border-right: 2px solid #363636;
+      width: 140px;
+    }
+  
+    nav li:nth-child(2n+1) a:after {
+      content: none;
+    }
+  
+    nav li:last-child a {
+      border-right: none;
+    }
+  
+    
+  
+  }
+  
+  
+  
+  

@@ -57,18 +57,13 @@ export class StadisticsByUserComponent implements OnInit {
                           console.dir(levelPlayed)
                           gamesByLevel.push({
                             level: levelPlayed,
-                            games: gamesPlayed
+                            games: this.divideArrayInSubArrays(gamesPlayed, 3) 
                           }) 
                         }
 
-                        /*games.map((g: any) => {
-                            let level = _.findWhere(
-                              levels, 
-                              possibleLevel => possibleLevel.key == g.level
-                            );                                          
-                            g.level = level                                          
-                          }                                         
-                        );*/
+                        //console.log(gamesByLevel)
+
+                        
                         return gamesByLevel
                       }
                     )
@@ -86,6 +81,21 @@ export class StadisticsByUserComponent implements OnInit {
 
     //let id = route.paramMap.get('id');
     
+  }
+
+  divideArrayInSubArrays(array, max) {
+    var twoDimensionArray = []
+    var subArray = []
+    for(var i = 0; i < array.length; i++) {
+      if(i < max) {
+        subArray.push(array[i])        
+      } else {
+        twoDimensionArray.push(subArray)
+        subArray = [array[i]]        
+      }
+    }    
+    twoDimensionArray.push(subArray)
+    return twoDimensionArray
   }
 
   ngOnInit() {    

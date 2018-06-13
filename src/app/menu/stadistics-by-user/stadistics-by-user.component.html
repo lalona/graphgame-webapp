@@ -1,27 +1,21 @@
-<div class="card" *ngFor="let game of games">  
-  <div class="container">
-    <h4><b>{{game.level.name}}</b></h4> 
-    <p>{{game.date}}</p> 
-    <div class="row">
-      <div class="column" style="background-color:#aaa;">
-        <h5>Inicio</h5>
-        <p>{{game.level.start_state | transforms}}</p>
-      </div>
-      <div class="column" style="background-color:#bbb;">
-        <h5>Solucion</h5>
-        <p>{{game.level.solved_state | transforms}}</p>
-      </div>
-      <div class="column" *ngFor="let g of games.games"
-          [ngStyle]="{'background-color': g.solved ? 'rgb(72, 255, 142)' : 'rgb(255, 65, 65)'}">
-        <h5>{{g.date}}</h5>
-        <p>{{g.movements | movements}}</p>
-      </div>
+<div class="container" *ngFor="let game of games">  
+  <h4><b>{{game.level.name}}</b></h4> 
+  <p>{{game.date}}</p> 
+  <div class="row">
+    <div class="six column" style="background-color:#aaa;">
+      <h5>Inicio</h5>
+      <p>{{game.level.start_state | transforms}}</p>
+    </div>    
+    <div class="six column" style="background-color:#bbb;">
+      <h5>Solucion</h5>
+      <p>{{game.level.solved_state | transforms}}</p>
+    </div>      
+  </div>
+  <div class="row" *ngFor="let g3 of game.games">
+    <div class="one-third column" *ngFor="let g of g3" 
+        [ngStyle]="{'background-color': g.solved ? 'rgb(72, 255, 142)' : 'rgb(255, 65, 65)'}">
+      <h5>{{g.date}}</h5>
+      <p>{{g.movements | movements}}</p>
     </div>
   </div>
 </div>
-
-<ul>
-  <li *ngFor="let game of games">
-    {{ game | json }}  
-  </li>
-</ul>
