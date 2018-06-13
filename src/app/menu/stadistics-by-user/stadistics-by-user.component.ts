@@ -13,6 +13,7 @@ import { _ } from 'underscore'
 export class StadisticsByUserComponent implements OnInit {
 
   games$: Observable<any[]>
+  games: any[]
   $games: Subscription;
   levels$: Observable<any[]>;
   $levels: Subscription;
@@ -32,27 +33,51 @@ export class StadisticsByUserComponent implements OnInit {
         );
         this.$levels = this.levels$.subscribe(
           levels => {
-            this.games$ = this.db.list('games_played', ref => ref.orderByChild('user').equalTo(id))
-                                .valueChanges()
-                                .pipe(
-                                  map(
-                                    (games) => {
-                                      console.dir(games)
-                                      let games_with_level = games.map(
-                                        (g:any) => {
-                                          let level = _.findWhere(levels, 
-                                            possibleLevel => possibleLevel.key == g.level 
-                                          );
-                                          
-                                          g.level = level                                          
-                                        }                                         
-                                      );
-                                      return games_with_level
-                                    }
-                                  )
-                                );
+            this.games$ = this.db.list('games_played', 
+            ref => ref.orderByChild('user').equalTo(id))
+                  .valueChanges()
+                  .pipe(
+                    map((games) => {
+                        console.log("Is entering for first time\n")                                    
+                        console.dir(games)
+                        var alllevelsPlayedByUser = []
+                        games.forEach((g: any) => {
+                          if(!_.contains(alllevelsPlayedByUser, g.level)) {
+                            alllevelsPlayedByUser.push(g.level)
+                          }
+                        });  
+                        console.dir(levels)
+                        var gamesByLevel = []
+                        for(var i = 0; i < alllevelsPlayedByUser.length; i++) {
+                          let lPlayed = alllevelsPlayedByUser[i]
+                          let gamesPlayed = _.where(games, {"level": lPlayed})
+                          console.log(lPlayed)
+                          console.dir(gamesPlayed)
+                          let levelPlayed = _.findWhere(levels, {"key": lPlayed})
+                          console.dir(levelPlayed)
+                          gamesByLevel.push({
+                            level: levelPlayed,
+                            games: gamesPlayed
+                          }) 
+                        }
+
+                        /*games.map((g: any) => {
+                            let level = _.findWhere(
+                              levels, 
+                              possibleLevel => possibleLevel.key == g.level
+                            );                                          
+                            g.level = level                                          
+                          }                                         
+                        );*/
+                        return gamesByLevel
+                      }
+                    )
+                  );
             this.$games = this.games$.subscribe(
-            
+              games => {
+                console.dir(games)
+                this.games = games
+              }
             )
           }
         );        
@@ -65,6 +90,7 @@ export class StadisticsByUserComponent implements OnInit {
 
   ngOnInit() {    
     this.sub.unsubscribe();
+    this.$games.unsubscribe();
   }
 
 }
