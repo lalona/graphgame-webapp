@@ -107,11 +107,9 @@ input[type='checkbox'] {
     font-weight: bold;
     font-family: 'Lucida Sans Unicode', 'Arial', serif;
     font-size: 1.2rem;    
-    text-align: center;
+    text-align: center;    
 
-    padding: 1rem;
-
-    color: #c0c0c0;
+    color: #f0f0f0;
     background: #1adf76;
 
     cursor: pointer;

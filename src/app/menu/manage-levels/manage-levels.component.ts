@@ -3,6 +3,7 @@ import { AngularFireDatabase,AngularFireList } from 'angularfire2/database';
 import { Observable, Subscription } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 import { _ } from 'underscore'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manage-levels',
@@ -20,7 +21,7 @@ export class ManageLevelsComponent implements OnDestroy {
   enabledLevels: any[];
   showingAll: boolean;
 
-  constructor(db: AngularFireDatabase) { 
+  constructor(db: AngularFireDatabase, private router: Router) { 
     this.levelsRef = db.list(this.basePath);
     this.showingAll = true
     this.levels$ = this.levelsRef.snapshotChanges().pipe(
@@ -78,6 +79,10 @@ export class ManageLevelsComponent implements OnDestroy {
   showEnableds() {
     this.levels = this.enabledLevels
     this.showingAll = false
+  }
+
+  goToCreateLevel() {
+    this.router.navigate(['/menu/create-levels']);
   }
 
 }
