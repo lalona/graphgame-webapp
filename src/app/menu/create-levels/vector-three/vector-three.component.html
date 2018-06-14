@@ -1,0 +1,27 @@
+<!-- Check if doesnt have to be in a container-->
+<div class="container">
+  <div class="row">
+      
+    <div class="four column">
+        <label>x</label>
+        <app-input-only-step [step]="step" [min]="min" [max]="max"
+          [(ngModel)]="vector3.x" (ngModelChange)="onChange($event)">
+        </app-input-only-step>                                     
+      </div>  
+
+      <div class="four column">
+        <label>y</label>
+        <app-input-only-step [step]="step" [min]="min" [max]="max"
+          [(ngModel)]="vector3.y" (ngModelChange)="onChange($event)">
+        </app-input-only-step>                    
+      </div>
+
+      <div class="four column">
+        <label>z</label>
+        <app-input-only-step [step]="step" [min]="min" [max]="max"
+          [(ngModel)]="vector3.z" (ngModelChange)="onChange($event)">
+        </app-input-only-step>                           
+      </div>
+
+  </div>
+</div>

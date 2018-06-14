@@ -24,7 +24,7 @@ export class Level {
 
     constructor() {
         this.solvedState = new Transformation();
-        this.startState = new Transformation();
+        this.startState = new Transformation();        
     }
 }
 

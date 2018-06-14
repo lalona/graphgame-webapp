@@ -55,199 +55,66 @@
 
         <div class="four column">          
           <label>Translacion</label>
-          <div class="row">
-              <div class="four column">
-                <app-input-only-step [step]="level.stepsTranslate" [min]="-2" [max]="2"
-                  [(ngModel)]="level.startState.translation.x" name="startTx">
-                </app-input-only-step>          
-              </div>  
-              <div class="four column">
-                <app-input-only-step [step]="level.stepsTranslate" [min]="-2" [max]="2"
-                  [(ngModel)]="level.startState.translation.y" name="startTy">
-                </app-input-only-step>    
-              </div>
-              <div class="four column">
-                <app-input-only-step [step]="level.stepsTranslate" [min]="-2" [max]="2"
-                  [(ngModel)]="level.startState.translation.z" name="startTz">
-                </app-input-only-step>        
-              </div>                        
-          </div>
+          <app-vector-three 
+            [(ngModel)]="level.startState.translation" name="startTranslation"
+            [step]="level.stepsTranslate" [min]="-2" [max]="2">
+          </app-vector-three>          
         </div>
-
-        <label>Rotacion</label>
-        <div>
-          <label *ngFor="let rot of level.startState.rotations">
-            Axis: {{rot.axis}} Value: {{rot.value}}
-          </label>
-          <div class="rotation">      
-              <app-input-only-step [step]="45" [min]="-1000" [max]="1000"
-                [(ngModel)]="rotationStarted.value" name="rotationStarted.value">
-              </app-input-only-step>      
-              <select [(ngModel)]="rotationStarted.axis" name="rotationStarted.axis">
-                  <option
-                    *ngFor="let rA of rotationAxis"
-                    [value]="rA">
-                    {{rA}}
-                  </option>          
-              </select>          
-          </div>
-          <button (click)="addRotationStart()" class="basic-btn" type=button>
-                Agregar
-          </button>
-        </div>
+          
         <div class="four column">
-            <label>Rotacion</label>
-            <div class="row">
-                <div class="four column">
-                  
-                </div>  
-                <div class="four column">
-                  
-                </div>
-                <div class="four column">
-                  
-                </div>                        
-            </div>
-        </div>
-
-        <div class="four column">
-            <label></label>
-            <div class="row">
-                <div class="four column">
-                  
-                </div>  
-                <div class="four column">
-                  
-                </div>
-                <div class="four column">
-                  
-                </div>                        
-            </div>
-        </div>
-
-      </div> 
-      
-
-      
-    </div>
-    
-    
-    
-    
-    
-
-    <label>Estado de inicio</label>
-    <label>Translacion</label>
-    <div class="vector3">  
-        <app-input-only-step [step]="level.stepsTranslate" [min]="-2" [max]="2"
-          [(ngModel)]="level.startState.translation.x" name="startTx">
-        </app-input-only-step>
-    
-        <app-input-only-step [step]="level.stepsTranslate" [min]="-2" [max]="2"
-          [(ngModel)]="level.startState.translation.y" name="startTy">
-        </app-input-only-step>
-
-        <app-input-only-step [step]="level.stepsTranslate" [min]="-2" [max]="2"
-          [(ngModel)]="level.startState.translation.z" name="startTz">
-        </app-input-only-step>      
-    </div>
-    <label>Rotacion</label>
-    <div>
-      <label *ngFor="let rot of level.startState.rotations">
-        Axis: {{rot.axis}} Value: {{rot.value}}
-      </label>
-      <div class="rotation">      
-          <app-input-only-step [step]="45" [min]="-1000" [max]="1000"
-            [(ngModel)]="rotationStarted.value" name="rotationStarted.value">
-          </app-input-only-step>      
-          <select [(ngModel)]="rotationStarted.axis" name="rotationStarted.axis">
-              <option
-                *ngFor="let rA of rotationAxis"
-                [value]="rA">
-                {{rA}}
-              </option>          
-          </select>          
-      </div>
-      <button (click)="addRotationStart()" class="basic-btn" type=button>
-            Agregar
-      </button>
-    </div>
-    <label>Escala</label>
-    <div class="vector3">
-        <label>x</label>
-        <app-input-only-step [step]="level.stepsScale" [min]="1" [max]="3" 
-          [(ngModel)]="level.startState.scale.x" name="startSx">
-        </app-input-only-step>
-    
-        <label>y</label>
-        <app-input-only-step [step]="level.stepsScale" [min]="1" [max]="3"
-          [(ngModel)]="level.startState.scale.y" name="startSy">
-        </app-input-only-step>
-
-        <label>z</label>
-        <app-input-only-step [step]="level.stepsScale" [min]="1" [max]="3"
-          [(ngModel)]="level.startState.scale.z" name="startSz">
-        </app-input-only-step>      
-    </div>
-
-    <label>Solucion</label>
-    <label>Translacion</label>
-    <div class="vector3">
-        <label>x</label>
-        <app-input-only-step [step]="level.stepsTranslate" [min]="-2" [max]="2"
-          [(ngModel)]="level.solvedState.translation.x" name="solvedTx">
-        </app-input-only-step>
-    
-        <label>y</label>
-        <app-input-only-step [step]="level.stepsTranslate" [min]="-2" [max]="2"
-          [(ngModel)]="level.solvedState.translation.y" name="solvedTy">
-        </app-input-only-step>
-
-        <label>z</label>
-        <app-input-only-step [step]="level.stepsTranslate" [min]="-2" [max]="2"
-          [(ngModel)]="level.solvedState.translation.z" name="solvedTz">
-        </app-input-only-step>     
-    </div>
-    <label>Rotacion</label>
-    <div>
-      <label *ngFor="let rot of level.solvedState.rotations">
-        Axis: {{rot.axis}} Value: {{rot.value}}
-      </label>
-      <div class="rotation">      
-          <app-input-only-step [step]="45" [min]="-1000" [max]="1000"
-            [(ngModel)]="rotationSolved.value" name="rotationSolved.value">
-          </app-input-only-step>      
+            <label>Rotacion</label>            
+            <app-roations-sequence
+              [(ngModel)]="level.startState.rotations" name="startRotation">
+            </app-roations-sequence>
             
-          <select [(ngModel)]="rotationSolved.axis" name="rotationSolved.axis">
-              <option
-                *ngFor="let rA of rotationAxis"
-                [value]="rA">
-                {{rA}}
-              </option>          
-          </select>          
+        </div>    
+
+        <div class="four column">
+            <label>Escala</label>
+            <app-vector-three 
+              [(ngModel)]="level.startState.scale" name="startScale"              
+              [step]="level.stepsScale" [min]="1" [max]="3">
+            </app-vector-three>          
+        </div>
+
       </div>
-      <button (click)="addRotationSolved()" class="basic-btn" type=button>
-            Agregar
-      </button>
-    </div>    
-    <label>Escala</label>
-    <div class="vector3">
-        <label>x</label>
-        <app-input-only-step [step]="level.stepsScale" [min]="1" [max]="3"
-          [(ngModel)]="level.solvedState.scale.x" name="solvedSx">
-        </app-input-only-step>
-    
-        <label>y</label>
-        <app-input-only-step [step]="level.stepsScale" [min]="1" [max]="3"
-          [(ngModel)]="level.solvedState.scale.y" name="solvedSy">
-        </app-input-only-step>
+      
+      <!-- Solucion -->
+      <label>Solucion</label>
+      <div class="row">
+        <div class="four column">          
+          <label>Translacion</label>
+          <app-vector-three 
+            [(ngModel)]="level.solvedState.translation" name="solvedTranslation"
+            [step]="level.stepsTranslate" [min]="-2" [max]="2">
+          </app-vector-three>                 
+        </div>
+          
+        <div class="four column">
+            <label>Rotacion</label>            
+            <app-roations-sequence
+              [(ngModel)]="level.solvedState.rotations" name="solvedRotation">
+            </app-roations-sequence>
+            
+        </div>    
 
-        <label>z</label>
-        <app-input-only-step [step]="level.stepsScale" [min]="1" [max]="3"
-          [(ngModel)]="level.solvedState.scale.z" name="solvedSz">
-        </app-input-only-step>      
+        <div class="four column">
+            <label>Escala</label>
+            <app-vector-three 
+              [(ngModel)]="level.solvedState.scale" name="solvedScale"              
+              [step]="level.stepsScale" [min]="1" [max]="3">
+            </app-vector-three>          
+        </div>        
+      </div>
+      
+
+      
     </div>
-
+    
+    
+    
+    
+        
     <label>Numero de intentos posibles</label>
     <app-input-only-step [step]="1" [min]="1" [max]="3"
       [(ngModel)]="level.maxAttemps" name="maxAttemps">

@@ -1,0 +1,6 @@
+.remove-rotation {
+    color: #ff5a5a;
+    font-weight: bold;
+}
+
+.remove-rotation:hover { cursor: pointer; }

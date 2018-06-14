@@ -1,0 +1,25 @@
+<label *ngFor="let rot of rotations">
+    Axis: {{rot.axis}} Value: {{rot.value}} 
+    <p class="remove-rotation" (click)="removeRotation(rot)">-</p>
+</label>
+<div class="container">
+    <div class="row">
+        <div class="four column">
+          <app-input-only-step [step]="45" [min]="-360" [max]="360"
+            [(ngModel)]="rotation.value">
+          </app-input-only-step>
+        </div>  
+
+        <div class="eight column">
+          <div class="container">
+            <div class="row">
+              <div class="four column" *ngFor="let rA of rotationAxis">
+                <button (click)="addRotation(rA)" type=button>
+                  {{rA}}
+                </button>
+              </div>              
+            </div>
+          </div>                    
+        </div>                   
+    </div>
+</div>

@@ -1,9 +1,30 @@
-<div>
-  <label>
-    {{value}}
-  </label>
-  <div>
-    <i class="up" (click)="increase()"></i>
-    <i class="down" (click)="decrease()"></i>
+<!--<div class="container">
+  <div class="row">   
+      <div class="one-third column">
+        <i class="down" (click)="decrease()"></i>
+      </div>
+      <div class="one-third column">
+        {{value}}
+      </div>
+      <div class="one-third column">
+        <i class="up" (click)="increase()"></i>
+      </div>                        
+  </div>
+</div>-->
+<!-- Change the `data-field` of buttons and `name` of input field's for multiple plus minus buttons-->
+<div class="input-group plus-minus-input">
+  <div class="input-group-button">
+    <button type="button" (click)="decrease()">
+      -
+    </button>
+  </div>
+  <div class="input-group-field">
+    <p>{{value}}</p>  
+  </div>  
+  <div class="input-group-button">
+    <button type="button" (click)="increase()">
+      +
+    </button>
   </div>
 </div>
+

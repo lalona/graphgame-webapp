@@ -13,7 +13,9 @@ import { InputOnlyStepComponent } from './create-levels/input-only-step/input-on
 import { StadisticsByUserComponent } from './stadistics-by-user/stadistics-by-user.component';
 import { GamesByUserService } from './games-by-user.service';
 import { TransformsPipe } from './transforms.pipe';
-import { MovementsPipe } from './movements.pipe'
+import { MovementsPipe } from './movements.pipe';
+import { VectorThreeComponent } from './create-levels/vector-three/vector-three.component';
+import { RoationsSequenceComponent } from './create-levels/roations-sequence/roations-sequence.component'
 
 @NgModule({
   imports: [
@@ -31,7 +33,9 @@ import { MovementsPipe } from './movements.pipe'
     AcceptOnlyNumbersDirective, InputOnlyStepComponent,
     StadisticsByUserComponent,
     TransformsPipe,
-    MovementsPipe
+    MovementsPipe,
+    VectorThreeComponent,
+    RoationsSequenceComponent
   ]
 })
 export class MenuModule { }

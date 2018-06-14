@@ -50,15 +50,16 @@ export class InputOnlyStepComponent implements OnInit, ControlValueAccessor {
   }
 
   increase() {
-    this.value += this.step
+    this.value += Number(this.step)
     if(this.value > this.max) {
       this.value = this.max
     }
+    console.log(this.value)
     this.propagateChange(this.value);
   }
 
   decrease() {
-    this.value -= this.step
+    this.value -= Number(this.step)
     if(this.value < this.min) {
       this.value = this.min
     }
